@@ -1,0 +1,234 @@
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+
+@mixin tag-ui() {
+  display: inline-block;
+  height: 16px;
+  padding: 0 8px;
+  margin-right: 8px;
+  border-radius: 4px;
+  
+  font-size: 12px;
+  
+  color: #999;
+  background: #eee;
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+}
+
+.site-name {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 0;
+  
+  transition: padding 300ms ease-in;
+  
+  @media (max-width: 480px) {
+    padding: 24px 12px;
+  }
+}
+
+#app {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  
+  transition: padding 300ms ease-in;
+  
+  @media (max-width: 480px) {
+    padding: 0 12px;
+  }
+}
+
+.filterbox {
+  width: 100%;
+  padding: 8px 0;
+}
+
+.filterbox__item {
+  @include tag-ui();
+  
+  &:before {
+    content: "";
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    margin-right: 4px;
+    
+    text-align: center;
+    vertical-align: middle;
+    
+    font-family: "entypo", san-serif;
+    line-height: 16px;
+  }
+  
+  &.is-checked {
+    background-color: #09d;
+    color: white;
+  }
+  
+  &.is-low:before {
+    content: "\2302";
+  }
+  
+  &.is-middle:before {
+    content: "\e736";
+  }
+  
+  &.is-high:before {
+    content: "\2665";
+  }
+}
+  
+.filtertag-list {
+  padding: 0px;
+  list-style: lower-alpha;
+  
+  counter-reset: filtertagitems 0;
+}
+
+.filtertag-list__message {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.filtertag-list__item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  
+  padding: 5px;
+  
+  
+}
+
+.filtertag-item__checkmark {
+  position: relative;
+  
+  display: block;
+  height: 32px;
+  width: 32px;
+  outline: 1px solid #ccc;
+  outline-offset: -8px;
+  
+  font-size: 32px;
+  line-height: 32px;
+  
+  cursor: pointer;
+  
+  &:after {
+    position: absolute;
+    display: block;
+    
+    width: 32px;
+    height: 32px;
+  }
+  
+  .is-checked & {
+    outline: none;
+  }
+  
+  .is-checked &:after {
+    content: "\2714";
+  }
+}
+.filtertag-item__summary {
+  display: block;
+  flex: 1 50%;
+  
+  padding: 0px 5px;
+  
+  .is-checked & {
+    color: #ccc;
+    text-decoration: line-through;
+  }
+}
+.filtertag-item__tags {
+  flex: 1 50%;
+}
+
+.filtertag-tags {
+  position: relative;
+  outline: 0;
+}
+.filtertag-tags__label {
+  padding: 4px;
+  color: #ccc;
+  font-size: 12px;
+
+  .is-tagged & {
+    color: #333;
+  }
+  
+  .is-editing & {
+    background-color: white;
+  }
+}
+.filtertag-tags__value {
+  @include tag-ui();
+  background-color: #09d;
+  color: white;
+  
+  &:before {
+    content: "";
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    margin-right: 4px;
+    
+    text-align: center;
+    vertical-align: middle;
+    
+    font-family: "entypo", san-serif;
+    line-height: 16px;
+  }
+  
+  &.is-low:before {
+    content: "\2302";
+  }
+  
+  &.is-middle:before {
+    content: "\e736";
+  }
+  
+  &.is-high:before {
+    content: "\2665";
+  }
+}
+.filtertag-tags__dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  margin-top: 4px;
+  width: 115px;
+  z-index: 1000; 
+  
+  background: white;
+  padding: 0;
+  
+  list-style: none;
+  
+  .is-editing > & {
+    display: block;
+
+    box-shadow: 0 3px 4px #ccc;
+  }
+}
+
+.filtertag-tags__item {
+  padding: 4px 16px;
+  
+  cursor: pointer;
+  
+  &:hover {
+    background-color: #eee;
+  }
+}
